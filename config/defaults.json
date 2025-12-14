@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "Weather & Currency CLI",
+    "version": "1.0.0"
+  },
+
+  "api": {
+    "weather_url": "",
+    "currency_url": "",
+    "timeout": 5,
+    "retries": 2
+  },
+
+  "features": {
+    "enable_weather": true,
+    "enable_currency": true
+  },
+
+  "location": {
+    "default_city": "Dodoma"
+  },
+
+  "logging": {
+    "level": "INFO",
+    "file": "logs/app.log",
+    "max_size_mb": 1,
+    "backup_count": 3,
+    "format": "%(asctime)s - %(levelname)s - %(message)s"
+  }
+}
