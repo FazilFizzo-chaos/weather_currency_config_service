@@ -1,0 +1,14 @@
+{
+  "api": {
+    "timeout": 2,
+    "retries": 1
+  },
+
+  "logging": {
+    "level": "DEBUG"
+  },
+
+  "features": {
+    "enable_currency": true
+  }
+}
