@@ -5,8 +5,9 @@
   },
 
   "api": {
-    "weather_url": "",
-    "currency_url": "",
+    "geocode_url": "http://api.openweathermap.org/geo/1.0/direct",
+    "weather_url": "https://api.openweathermap.org/data/2.5/weather",
+    "currency_url": "https://v6.exchangerate-api/v6",
     "timeout": 5,
     "retries": 2
   },
