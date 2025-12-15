@@ -17,5 +17,3 @@ def load_json():
         return json.load(config_file)
     except FileNotFoundError:
        raise FileNotFoundError(f"Config file not found: config/{env}.json")
-
-print(load_json())
