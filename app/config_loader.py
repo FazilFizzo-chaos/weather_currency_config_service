@@ -4,14 +4,12 @@ import json
 from pathlib import Path
 load_dotenv(".env.dev")
 
-env = os.getenv("APP_ENV", "dev")
+BASE_DIR = Path(__file__).resolve().parent  # base dir of this file
+PROJECT_ROOT = BASE_DIR.parent  # root dir of the whole project
+CONFIG_DIR = PROJECT_ROOT / "config"  # config files dir
 
-BASE_DIR = Path(__file__).resolve().parent # base dir of this file
-PROJECT_ROOT = BASE_DIR.parent # root dir of the whole project
-CONFIG_DIR = PROJECT_ROOT / "config" # config files dir
-config_file_env_path = CONFIG_DIR / f"{env}.json"
-
-def load_json():
+def load_json(env):
+    config_file_env_path = CONFIG_DIR / f"{str(env)}.json"
     try:
       with open(config_file_env_path, encoding="utf-8") as config_file:
         return json.load(config_file)
