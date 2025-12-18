@@ -2,7 +2,12 @@ from dotenv import load_dotenv
 import os
 import json
 from pathlib import Path
-load_dotenv(".env.dev")
+
+def load_env(env: str):
+   env_file = f".env.{env}"
+   load_dotenv(env_file)
+
+
 
 BASE_DIR = Path(__file__).resolve().parent  # base dir of this file
 PROJECT_ROOT = BASE_DIR.parent  # root dir of the whole project
