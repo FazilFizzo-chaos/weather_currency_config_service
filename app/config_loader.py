@@ -3,15 +3,16 @@ import os
 import json
 from pathlib import Path
 
-def load_env(env: str):
-   env_file = f".env.{env}"
-   load_dotenv(env_file)
-
-
 
 BASE_DIR = Path(__file__).resolve().parent  # base dir of this file
 PROJECT_ROOT = BASE_DIR.parent  # root dir of the whole project
 CONFIG_DIR = PROJECT_ROOT / "config"  # config files dir
+
+
+def load_env(env: str):
+   env_file = f".env.{env}"
+   load_dotenv(env_file)
+
 
 def load_json(env):
     config_file_env_path = CONFIG_DIR / f"{str(env)}.json"
@@ -20,6 +21,7 @@ def load_json(env):
         return json.load(config_file)
     except FileNotFoundError:
        raise FileNotFoundError(f"Config file not found: config/{env}.json")
+
 
 config_default_path = CONFIG_DIR / "defaults.json"
 def load_default_config():

@@ -8,8 +8,6 @@ def main():
  args = parse_args()
  load_env(args.env)
  api_currency_key = os.getenv("API_KEY_CURRENCY")
- # if api_currency_key is None:
- #  raise ValueError("API_KEY_CURRENCY not found in environment")
 
  json_config = load_default_config()
  currency_base_url = json_config["api"]["currency_url"]
