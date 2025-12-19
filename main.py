@@ -17,7 +17,11 @@ def main():
 
  first_currency = args.first_currency
  second_currency = args.second_currency
- print(fetch_conversion_rate_btn_two_currencies(currency_base_url, api_currency_key, first_currency, second_currency))
+ amount = args.amount
+ if amount:
+  print(fetch_conversion_rate_btn_two_currencies(currency_base_url, api_currency_key, first_currency, second_currency, amount))
+ else:
+  print(fetch_conversion_rate_btn_two_currencies(currency_base_url, api_currency_key, first_currency, second_currency))
 
 if __name__ == "__main__":
        main()

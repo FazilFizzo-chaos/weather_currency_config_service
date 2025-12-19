@@ -16,17 +16,32 @@ def fetch_conversion_rate_currency(config_url: str, api_key, currency: str):
         print("Request failed: ", e)
 
 
-def fetch_conversion_rate_btn_two_currencies(config_url: str, api_key, first_currency, second_currency):
-    try:
-     response = requests.get(f"{config_url}/{api_key}/pair/{first_currency}/{second_currency}")
-     print("Status code:", response.status_code)
-     response.raise_for_status()
-     if "application/json" in response.headers.get("Content-Type", ""):
+def fetch_conversion_rate_btn_two_currencies(config_url: str, api_key, first_currency, second_currency, amount=None):
+    if amount is None:
+     try:
+      response = requests.get(f"{config_url}/{api_key}/pair/{first_currency}/{second_currency}")
+      print("Status code:", response.status_code)
+      response.raise_for_status()
+      if "application/json" in response.headers.get("Content-Type", ""):
        data = response.json()
        return data
-     else:
+      else:
          print("Response is not JSON")
-    except requests.exceptions.JSONDecodeError:
+     except requests.exceptions.JSONDecodeError:
             print("Response is not valid JSON")
-    except requests.exceptions.RequestException as e:
+     except requests.exceptions.RequestException as e:
         print("Request failed: ", e)
+    else:
+        try:
+            response = requests.get(f"{config_url}/{api_key}/pair/{first_currency}/{second_currency}/{amount}")
+            print("Status code:", response.status_code)
+            response.raise_for_status()
+            if "application/json" in response.headers.get("Content-Type", ""):
+                data = response.json()
+                return data
+            else:
+                print("Response is not JSON")
+        except requests.exceptions.JSONDecodeError:
+            print("Response is not valid JSON")
+        except requests.exceptions.RequestException as e:
+            print("Request failed: ", e)
