@@ -15,3 +15,19 @@ def fetch_geo_location(config_geo_url: str, api_key, city_name, state_code, coun
             print("Response is not valid JSON")
     except requests.exceptions.RequestException as e:
         print("Request failed: ", e)
+
+
+def fetch_current_weather_data(config_weather_url: str, api_key, latitude, longitude):
+    try:
+     response = requests.get(f"{config_weather_url}?lat={latitude}&lon={longitude}&appid={api_key}")
+     print("Status code:", response.status_code)
+     response.raise_for_status()
+     if "application/json" in response.headers.get("Content-Type", ""):
+       data = response.json()
+       return data
+     else:
+         print("Response is not JSON")
+    except requests.exceptions.JSONDecodeError:
+            print("Response is not valid JSON")
+    except requests.exceptions.RequestException as e:
+        print("Request failed: ", e)

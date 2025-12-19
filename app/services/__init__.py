@@ -1,3 +1,3 @@
 from .currency_service import fetch_conversion_rate_currency
 from .currency_service import fetch_conversion_rate_btn_two_currencies
-from .weather_service import fetch_geo_location
+from .weather_service import fetch_geo_location, fetch_current_weather_data
