@@ -30,3 +30,17 @@ def load_default_config():
         return json.load(f)
     except FileNotFoundError:
         raise FileNotFoundError(f"Config file not found: {config_default_path}")
+
+
+def deep_merge_conflict(base: dict, override: dict) -> dict:
+    result = base.copy()
+    for key, value in override.items():
+        if (
+            key in result
+            and isinstance(result[key], dict)
+            and isinstance(value, dict)
+        ):
+            result[key] = deep_merge_conflict(result[key], value)
+        else:
+            result[key] = value
+    return result
