@@ -9,6 +9,6 @@
   },
 
   "features": {
-    "enable_currency": true
+    "enable_currency": false
   }
 }

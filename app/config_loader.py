@@ -9,7 +9,7 @@ PROJECT_ROOT = BASE_DIR.parent  # root dir of the whole project
 CONFIG_DIR = PROJECT_ROOT / "config"  # config files dir
 
 
-def load_env(env: str):
+def load_env(env=None):
    env_file = f".env.{env}"
    load_dotenv(env_file)
 
